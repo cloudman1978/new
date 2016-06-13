@@ -1,0 +1,18 @@
+table .chb{ 
+	width: 20px; 
+}
+
+.table-icon { padding: 1px 8px; margin-right: 5px; }
+.edit.table-icon { background: url(i_edit.png) no-repeat; }
+.delete.table-icon { background: url(i_delete.png) no-repeat; }
+.res.table-icon { background: url(res.png) no-repeat; }
+.vue.table-icon { background: url(vue.png) no-repeat; }
+.validate.table-icon { background: url(i_ok	.png) no-repeat; }
+
+
+.right {
+    position: absolute;
+    right: -150px;
+    width: 300px;
+    padding: 10px;
+}
