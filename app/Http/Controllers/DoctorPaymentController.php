@@ -30,16 +30,23 @@ class DoctorPaymentController extends Controller
         $ide = $user->establishment_id;
         $establishment = Establishment::find($ide);
         $type = Type::find($establishment->type_id);
+        if(isset($_GET) && empty($_GET)){
+            $date= date('Y-m-d', time());
+        }
+        else {
+            $date = $_GET['date'];
+        }
         $payments  = DB::table('payment')
             ->join('rdv', 'rdv.id', '=', 'payment.rdv_id')
             ->join('users', 'users.id', '=', 'rdv.user_id')
             ->join('patients', 'patients.id', '=', 'rdv.patient_id')
             ->select( 'payment.*', 'patients.name as patient', 'users.name as praticien')
+            ->where('rdv.date', '=', $date)
             ->where('rdv.user_id', '=', $id);
 
         $amount = $payments->avg('payment.amount');
         $payments = $payments->get();
-        $date = date('Y-m-d', time());
+
         return view('backoffice.doctor.payment.index')
             ->with('payments', $payments)
             ->with('date', $date)

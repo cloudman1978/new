@@ -28,7 +28,7 @@
 @section('body')
 
 @section('deconnect')
-    <a href="/backoffice/auth/logoutt">Déconnexion </a>
+    <a href="/backoffice/auth/logout">Déconnexion </a>
 @stop
 
 @section('deconnect2')
