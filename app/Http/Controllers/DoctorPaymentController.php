@@ -35,13 +35,16 @@ class DoctorPaymentController extends Controller
             ->join('users', 'users.id', '=', 'rdv.user_id')
             ->join('patients', 'patients.id', '=', 'rdv.patient_id')
             ->select( 'payment.*', 'patients.name as patient', 'users.name as praticien')
-            ->where('rdv.user_id', '=', $id)
-            ->get();
+            ->where('rdv.user_id', '=', $id);
+
+        $amount = $payments->avg('payment.amount');
+        $payments = $payments->get();
         $date = date('Y-m-d', time());
         return view('backoffice.doctor.payment.index')
             ->with('payments', $payments)
             ->with('date', $date)
-            ->with('type', $type);
+            ->with('type', $type)
+            ->with('amount', $amount);
     }
 
     /**

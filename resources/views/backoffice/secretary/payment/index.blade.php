@@ -146,7 +146,7 @@
 
     <ol class="breadcrumb">
         <li class="breadcrumb-icon">
-            <span class="fa fa-dashboard"></span>
+            <span class="fa fa-credit-card"></span>
         </li>
         <li class="breadcrumb-active">
             <a href="/backoffice/secretary/payment">Liste des paiements</a>
