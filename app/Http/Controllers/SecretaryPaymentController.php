@@ -27,6 +27,12 @@ class SecretaryPaymentController extends Controller
         $id= Auth::id();
         $user = User::find($id);
 
+        if(isset($_GET) && empty($_GET)){
+            $date= date('Y-m-d', time());
+        }
+        else {
+            $date = $_GET['date'];
+        }
         $ide = $user->establishment_id;
         $establishment = Establishment::find($ide);
         $type = Type::find($establishment->type_id);
@@ -36,8 +42,9 @@ class SecretaryPaymentController extends Controller
             ->join('patients', 'patients.id', '=', 'rdv.patient_id')
             ->select( 'payment.*', 'patients.name as patient', 'users.name as praticien')
             ->where('rdv.establishment_id', '=', $ide)
+            ->where('rdv.date', '=', $date)
             ->get();
-        $date = date('Y-m-d', time());
+      //  $date = date('Y-m-d', time());
         return view('backoffice.secretary.payment.index')
             ->with('payments', $payments)
             ->with('date', $date)

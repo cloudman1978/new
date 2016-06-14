@@ -114,15 +114,6 @@
                         </span>
         </a>
     </li>
-    <li>
-
-
-        <a href="backoffice/secretary/indicators">
-            <span class="fa fa-eye-slash"></span>
-                        <span class="sidebar-title"> Gérer les indicateurs médicaux
-                        </span>
-        </a>
-    </li>
 
 @stop
 

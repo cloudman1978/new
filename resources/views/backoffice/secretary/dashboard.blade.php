@@ -87,9 +87,8 @@
                     </a>
                 </li>   
                    <li>
-                
-                                
-                         <a href="backoffice/secretary/payment">
+
+                       <?php echo  "<a href=".'backoffice/secretary/payment?date='.$date.">" ?>
                         <span class="fa fa-cc-mastercard"></span>
                         <span class="sidebar-title"> Gérer les payments
                         </span>
@@ -114,16 +113,6 @@
                         </span>
           </a>
       </li>
-      <li>
-
-
-          <a href="backoffice/secretary/indicators">
-              <span class="fa fa-eye-slash"></span>
-                        <span class="sidebar-title"> Gérer les indicateurs médicaux
-                        </span>
-          </a>
-      </li>
-
 
      @stop
 

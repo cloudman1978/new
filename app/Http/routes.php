@@ -105,6 +105,9 @@ Route::group(['middleware' => 'secretary'], function () {
 
 
     Route::resource('backoffice/secretary/rdv', 'SecretaryRdvController');
+
+
+
     Route::resource('backoffice/secretary/payment', 'SecretaryPaymentController');
 });
 

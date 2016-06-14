@@ -384,10 +384,7 @@
                                         @endforeach
                                     </td>
                                     <td>
-                                        <a href="{{route('backoffice.doctor.patientAnalysis.edit', $pha->id)}}"
-                                           class="table-icon edit" title="Edit"></a>
-                                        <a href="/backoffice/doctor/patientAnalysis/{{$pha->id}}" class="table-icon delete" title="Delete">
-                                        </a>
+
                                             <a href="/backoffice/doctor/patientAnalysis/{{$pha->id}}/viewRes"
                                                class="table-icon vue" title="Result"></a>
                                     </td>

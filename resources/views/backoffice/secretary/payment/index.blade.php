@@ -5,6 +5,26 @@
     Espace Gestionnaire
 @stop
 
+@section('header')
+
+
+    <script type="text/javascript">
+        function redirect_aa() {
+            var    dd = document.getElementById('viewdate');
+            var nvd = 'date('+"Y-m-d"+' ,'+dd+')';
+
+            <?php
+
+            ?>
+            $(document).ready(function () {
+                $('#viewdate').change(function (e) {
+                    numberr = $(this).val();
+                });
+            });
+        }
+    </script>
+    @stop
+
 @section('body')
 
 @section('deconnect')
@@ -89,7 +109,7 @@
     <li>
 
 
-        <a href="backoffice/secretary/payment">
+        <?php echo  "<a href=".'backoffice/secretary/payment?date='.$date.">" ?>
             <span class="fa fa-cc-mastercard"></span>
                         <span class="sidebar-title"> Gérer les paiements
                         </span>
@@ -114,16 +134,6 @@
                         </span>
         </a>
     </li>
-    <li>
-
-
-        <a href="backoffice/secretary/indicators">
-            <span class="fa fa-eye-slash"></span>
-                        <span class="sidebar-title"> Gérer les indicateurs médicaux
-                        </span>
-        </a>
-    </li>
-
 @stop
 
 @section('user')
@@ -164,6 +174,57 @@
 
 
 @section('content')
+
+
+
+    <div class="section">
+        <label for="search" class="field prepend-icon">
+            <input type="text" name="search" class="gui-input" value="{{ old('search') }}"
+                   placeholder="Donner le nom du patient s'il vous plaît..."
+                   size="100" id="filter">
+            <label for="search" class="field-icon">
+                <i class="fa fa-credit-user"></i>
+            </label>
+        </label>
+    </div>
+
+    <div class="section">
+
+        <label for="viewdate" class="field prepend-icon">
+            <input type="text" id="viewdate" name="viewdate"
+                   class="gui-input" value="{{ $date }}"
+                   placeholder="Donner la date du paiement"
+            >
+            <label class="field-icon" for="viewdate">
+                <i class="fa fa-calendar"></i>
+            </label>
+        </label><br clear="all">
+    </div>
+    <script>
+        $("document").ready(function(){
+            $("#viewdate").datepicker({
+                minDate: '2016-01-01',
+                prevText: '<i class="fa fa-chevron-left"></i>',
+                nextText: '<i class="fa fa-chevron-right"></i>',
+                dateFormat: 'yy-mm-dd',
+                showButtonPanel: false,
+                beforeShow: function(input, inst) {
+                    var newclass = 'allcp-form';
+                    var themeClass = $(this).parents('.allcp-form').attr('class');
+                    var smartpikr = inst.dpDiv.parent();
+                    if (!smartpikr.hasClass(themeClass)) {
+                        inst.dpDiv.wrap('<div class="' + themeClass + '"></div>');
+                    }
+                },
+                onSelect: function(dateText, inst) {
+                    // alert( dateText);
+                    // xhr.open('GET', 'http://localhost:8080/backoffice/secretary/rdv?date=' + dateText);
+                    document.location.href = 'http://localhost:8000/backoffice/secretary/payment?date=' + dateText;
+                }
+            });
+        });
+
+    </script>
 
     <section id="content" class="table-layout animated fadeIn">
 
@@ -250,6 +311,46 @@
     </section>
     <!-- -------------- /Content -------------- -->
 
+
+
+    <script type="text/javascript">
+        $(function () {
+            $('table').footable().bind('footable_filtering', function (e) {
+                var selected = $('.filter-status').find(':selected').text();
+                if (selected && selected.length > 0) {
+                    e.filter += (e.filter && e.filter.length > 0) ? ' ' + selected : selected;
+                    e.clear = !e.filter;
+                }
+            });
+
+            $('.clear-filter').click(function (e) {
+                e.preventDefault();
+                $('.filter-status').val('');
+                $('table.demo').trigger('footable_clear_filter');
+            });
+
+            $('.filter-status').change(function (e) {
+                e.preventDefault();
+                $('table.demo').trigger('footable_filter', {filter: $('#filter').val()});
+            });
+
+            $('.filter-api').click(function (e) {
+                e.preventDefault();
+
+                //get the footable filter object
+                var footableFilter = $('table').data('footable-filter');
+
+                alert('about to filter table by "name"');
+                //filter by 'tech'
+                footableFilter.filter('name');
+
+                //clear the filter
+                if (confirm('clear filter now?')) {
+                    footableFilter.clearFilter();
+                }
+            });
+        });
+    </script>
 @stop
 
 
