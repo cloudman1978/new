@@ -1,8 +1,11 @@
 @extends('layouts.layout')
-
+@section('title')
+    Docteur - Conditions d'utilisation
+@stop
 
 @section('chercher')
 
+    @include('partial')
 
 @stop
 @section('apropos')

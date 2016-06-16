@@ -50,7 +50,7 @@
             <!-- -------------- Registration -------------- -->
             <div class="allcp-form theme-primary mw600" id="register">
                 <div class="bg-primary mw600 text-center mb20 br3 pv15">
-                    <img src="assets/img/logo.png" alt=""/>
+                    <img src="assets/img/logo-white.png" alt=""/>
                 </div>
                 <div class="panel panel-primary">
                     <div class="panel-heading pn">

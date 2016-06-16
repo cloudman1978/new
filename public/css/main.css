@@ -1,4 +1,5 @@
 /*
+#4589B0
  @Author: ThemoGraphics
  @URL: http://themographics.com
  This file contains the styling for the actual theme, this
@@ -283,6 +284,10 @@ address { font-style: italic; }
 	font: 14px/54px 'Montserrat', Arial, Helvetica, sans-serif;
 	position: relative;
 	overflow: hidden;
+	-webkit-transition: all 600ms ease;
+	-moz-transition: all 600ms ease;
+	-o-transition: all 600ms ease;
+	transition: all 600ms ease;
 }
 .tg-btn:after {
 	content: "";
@@ -292,7 +297,7 @@ address { font-style: italic; }
 	left: 50%;
 	width: 150%;
 	z-index: -1;
-		-moz-transform: translateX(-50%) translateY(-50%) rotate(25deg);
+	-moz-transform: translateX(-50%) translateY(-50%) rotate(25deg);
 	-ms-transform: translateX(-50%) translateY(-50%) rotate(25deg);
 	-webkit-transform: translateX(-50%) translateY(-50%) rotate(25deg);
 	transform: translateX(-50%) translateY(-50%) rotate(25deg);
@@ -1059,7 +1064,7 @@ form fieldset .form-group.tg-checkbox input.form-control[type='checkbox'] {
 	left: 100%;
 	width: 30px;
 	height: 100%;
-	background: url(../images/shadow.png) repeat-y;
+	background: url(../img/shadow.png) repeat-y;
 	z-index: 4;
 }
 .tg-tabs-nav li{
@@ -1177,7 +1182,7 @@ body.tg-comming-soon #main{
 	-ms-background-size: auto 100%;
 	-moz-background-size: auto 100%;
 	-webkit-background-size: auto 100%;
-	background: url(../images/bg-commingsoon.jpg) no-repeat 50% 50%;
+	background: url(../img/bg-commingsoon.jpg) no-repeat 50% 50%;
 }
 /* =============================================
 			Search Categories Style
@@ -3521,5 +3526,31 @@ div.canvas{
 #comming-countdown li:last-child span,
 #comming-countdown li:last-child p{ color: #fff;}
 #comming-countdown li:last-child span:before{ background: #fff;}
-
+/*****************************/
+.logo {
+	float: left;
+	padding: 5px 0;
+}
+.tg-banner-content{
+	background:#1D628B;
+	background-image: url("../img/pattern.png");
+}
+.form-searchdoctors .form-control {
+	height: 50px;
+	padding: 15px 15px;
+	border: none;
+	border-bottom: 2px solid white;
+	background: white;
+	color: #444;
+}
+.form-searchdoctors .select select {
+	height: 50px;
+	padding: 15px 15px;
+}
+.form-searchdoctors .tg-btn {
+	line-height: 46px;
+	width: 48%;
+	float: right;
+	padding: 0;
+}
 

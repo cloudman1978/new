@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Insurance;
 use App\Patient;
+use App\Rdv;
 use App\Speciality;
 use Illuminate\Http\Request;
 
@@ -196,7 +197,7 @@ class EspacePatientController extends Controller
             ->join('specialities', 'specialities.id', '=', 'users.speciality_id')
             ->where('patients.id', $patient->id)
             ->select( 'rdv.*', 'establishment.nameE', 'users.name as nameU', 'establishment.logo'
-                , 'establishment.address', 'specialities.intituleProf', 'patients.name as nameP')
+                , 'establishment.address', 'specialities.intituleProf', 'patients.name as nameP', 'users.id as idUE')
             ->get();
 
         $jours = array('Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Venderdi', 'Samedi');
@@ -300,7 +301,7 @@ class EspacePatientController extends Controller
             ->join('rdv', 'payment.rdv_id', '=', 'rdv.id' )
             ->join('patients', 'rdv.patient_id', '=', 'patients.id')
                 ->where('patients.id', $patient->id)
-            ->avg('amount');
+            ->sum('amount');
         $jours = array('Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Venderdi', 'Samedi');
         $mois = array('Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre',
             'Novembre', 'Décembre');
@@ -475,6 +476,86 @@ class EspacePatientController extends Controller
 
         return redirect()->route('patient.index');
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function cancelRdv($id)
+    {
+        $patient=  Cookie::get('patient');
+        $patient = Patient::find($patient->id);
+
+        $rdv = Rdv::find($id);
+        $specilaities = Speciality::all();
+
+
+    /*    echo '<pre>';
+        print_r($rdv);
+        exit();
+*/
+
+        return view('patient.cancelRdv')->with('rdv', $rdv)
+            ->with('specialities', $specilaities)
+            ->with('patient', $patient);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        Rdv::find($id)
+            ->delete();
+
+
+
+
+        $patient=  Cookie::get('patient');
+        $patient = Patient::find($patient->id);
+        $rdvs =DB::table('rdv')
+            ->join('patients', 'rdv.patient_id', '=', 'patients.id')
+            ->join('users', 'users.id', '=', 'rdv.user_id')
+            ->join('establishment', 'establishment.id', '=', 'rdv.establishment_id')
+            ->join('specialities', 'specialities.id', '=', 'users.speciality_id')
+            ->where('patients.id', $patient->id)
+            ->select( 'rdv.*', 'establishment.nameE', 'users.name as nameU', 'establishment.logo'
+                , 'establishment.address', 'specialities.intituleProf', 'patients.name as nameP', 'users.id as idUE')
+            ->get();
+
+        $jours = array('Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Venderdi', 'Samedi');
+        $mois = array('Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre',
+            'Novembre', 'Décembre');
+
+        foreach($rdvs as $d){
+            $ddd = strtotime($d->hour);
+            $j = date('N', $ddd);
+            $jour = $jours[$j-1];
+            $m = date('m', $ddd);
+
+            if($m <10)
+                $m = $m % 10;
+            $moi = $mois[$m-1];
+            $y = date('Y', $ddd);
+            $a = date('A', $ddd);
+            $num = date('d', $ddd);
+            $heur = date('h:i', $ddd);
+
+            $d->textH = 'Le '.$jour.' '.$num.' '.$moi.' '.$y.' à '.$heur.' '.$a;
+        }
+
+        $specialities = Speciality::all();
+
+        return redirect()->route('patient.RdvList')->with('patient',  $patient)
+            ->with('rdvs', $rdvs)
+            ->with('specialities', $specialities);
+    }
+
 
 
 }

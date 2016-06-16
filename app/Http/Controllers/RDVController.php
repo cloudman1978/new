@@ -222,7 +222,7 @@ class RDVController extends Controller
        Rdv::create([
             'date' => date("Y:m:d", $_GET['heure']),
              'hour' => date("Y:m:d H:i:s", $_GET['heure']),
-             'state' => 0,
+             'state' => 10,
             'rqs' => $inputs['ttt'],
             'establishment_id' => $user->idEs,
             'patient_id' => $_GET['patient'],

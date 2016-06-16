@@ -49,11 +49,11 @@ a,
 .tg-addfield button span,
 .tg-packages ul li
 {
-	-webkit-transition: all 300ms ease-in-out;
-	-moz-transition: all 300ms ease-in-out;
-	-ms-transition: all 300ms ease-in-out;
-	-o-transition: all 300ms ease-in-out;
-	transition: all 300ms ease-in-out;
+	-webkit-transition: all 300ms ease-in-out!important;
+	-moz-transition: all 300ms ease-in-out!important;
+	-ms-transition: all 300ms ease-in-out!important;
+	-o-transition: all 300ms ease-in-out!important;
+	transition: all 300ms ease-in-out!important;
 }
 .tg-blog-list .tg-post .tg-feature-img img{
 	-webkit-transition: all 3000ms ease-in-out;

@@ -253,14 +253,23 @@ Route::post('auth/register', 'Auth\PatientAuthController@postRegister');
     Route::resource('patient/doctors', 'EspacePatientController@doctors');
 
 
-    Route::resource('patient/consultations', 'EspacePatientController@consult');
+  //  Route::resource('patient/consultations', 'EspacePatientController@consult');
     Route::resource('patient/payments', 'EspacePatientController@pay');
-    Route::resource('patient/insure', 'EspacePatientController@insure');
-    Route::resource('patient/modifyProfile', 'EspacePatientController@profile');
+  //  Route::resource('patient/insurofilre', 'EspacePatientController@insure');
+    Route::resource('patient/modifyPe', 'EspacePatientController@profile');
     Route::put('patient/{user}', 'EspacePatientController@update');
 Route::resource('patient/RdvList', 'EspacePatientController@rdvList');
 
-Route::resource('patient', 'EspacePatientController@view');
 
 
+
+    Route::get('patient/cancelRdv/{rdv}',[
+        'as' => 'patient/cancelRdv/{rdv}',
+        'uses' => 'EspacePatientController@cancelRdv'
+    ]);
+
+
+    Route::patch('patient/cancelRdv/{rdv}', 'EspacePatientController@cancelRdv');
+
+    Route::resource('patient', 'EspacePatientController@view');
 });

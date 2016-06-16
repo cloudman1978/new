@@ -1,9 +1,12 @@
 @extends('layouts.layout')
 
+@section('title')
+    Docteur - A propos de nous
+@stop
 
 @section('chercher')
 
-
+    @include('partial')
 @stop
 @section('apropos')
 

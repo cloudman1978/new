@@ -44,7 +44,7 @@ class DoctorPaymentController extends Controller
             ->where('rdv.date', '=', $date)
             ->where('rdv.user_id', '=', $id);
 
-        $amount = $payments->avg('payment.amount');
+        $amount = $payments->sum('payment.amount');
         $payments = $payments->get();
 
         return view('backoffice.doctor.payment.index')

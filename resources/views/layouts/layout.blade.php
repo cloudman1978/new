@@ -57,7 +57,7 @@
 
     <!-- Include English language -->
     <script src="dist/js/i18n/datepicker.en.js"></script>
-
+@yield('header')
 
 </head>
 <body>
@@ -147,7 +147,7 @@
                         <div class="tg-footercol">
                             <strong class="logo">
                                 <a href="#">
-                                    <img src="img/logo2.png" alt="image description">
+                                    <img src="img/logo-white.png" alt="image description">
                                 </a>
                             </strong>
                             <div class="tg-description">

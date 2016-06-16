@@ -7,132 +7,7 @@
 
 
 @section('chercher')
-    <div style="height: 300px" class="tg-location-map tg-haslayout"></div>
-    <div class="tg-banner-content">
-        <div class="tg-displaytable">
-            <div class="tg-displaytablecell">
-
-
-            <div class="container">
-        <div class="col-md-12 col-sm-7 col-xs-9 tg-verticalmiddle">
-            <div class="row">
-                <form class="form-searchdoctors"  method="post" name="form" action="/search">
-                    {!! csrf_field() !!}
-
-
-
-                    <fieldset>
-                        <div class="tab-content tg-tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="nephrologist">
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-12 col-xs-12 tg-verticalmiddle">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Address"
-                                                   id="address" name="address">
-                                            <a style="height: 69px;margin-left: -104px;padding-top: 28px;position: absolute;"
-                                               href="javascript:void(0);" class="search__doc-where__geolc geolc icon-location"
-                                               data-toggle="popover" data-placement="bottom"
-                                               data-trigger="manual"><span>Autour de moi</span></a>
-
-                                        </div>
-
-
-                                    </div>
-
-                                    <div class="col-md-3 col-sm-12 col-xs-12 tg-verticalmiddle">
-                                        <div class="form-group">
-
-                                            {!! csrf_field() !!}
-                                            <span class="select">
-                                                                         <select  class="group" name="speciality" id="speciality">
-                                                                             <option value="-1">Sélectionner une spécialité s'il vous plaît</option>
-                                                                             @foreach($specialities as $specialite)
-
-                                                                                 @if($specialite->id <> 1)
-                                                                                     <option value="{{$specialite->id}}">{{$specialite->intituleProf}}</option>
-                                                                                 @endif
-                                                                             @endforeach
-                                                                         </select>
-                                                                    </span>
-
-                                        </div>
-
-                                        <input type="hidden" name="long" id="long">
-                                        <input type="hidden" name="lat" id="lat">
-
-                                    </div>
-                                    <div class="col-md-3 col-sm-12 col-xs-12 tg-verticalmiddle">
-                                        <div class="form-group">
-
-                                            <input type="text" class="form-control" placeholder="Nom du docteur"
-                                                   name="name">
-                                        </div>
-
-
-                                    </div>
-                                    <div class="col-md-3 col-sm-12 col-xs-12 tg-verticalmiddle">
-                                        <div class="form-group">
-                                            <button class="tg-btn" type="submit">Chercher</button>
-                                            <!--    <button  type="search" class="tg-btn" >Chercher</button>!-->
-                                        </div>
-
-
-                                    </div>
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-2 col-sm-12 col-xs-12 tg-verticalmiddle">
-
-
-                                    </div>
-                                    <div class="col-md-10 col-sm-12 col-xs-12 tg-verticalmiddle">
-
-                                        <h5>Trouvez un docteur et prendre un rendez-vous immédiatement.</h5>
-
-                                    </div></div>
-                            </div>
-                        </div>
-                        @if (count($errors) > 0)
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-
-                    </fieldset>
-                </form>
-            </div>
-        </div>
-    </div>
-            </div>
-        </div>
-    </div>
-    <div class="show-search"><i class="fa fa-search"></i></div>
-
-    <script type="text/javascript">
-        var x = document.getElementById("long");
-        var y = document.getElementById("lat");
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-            } else {
-                x.innerHTML = "Geolocation is not supported by this browser.";
-            }
-        }
-        function showPosition(position) {
-            y.value =  position.coords.latitude ;
-
-
-            x.value =   position.coords.longitude;
-
-            // document.write (x.value+ ', '+ y.value);
-        }
-    </script>
-
-
+    @include('partial')
 
 @stop
 
@@ -148,7 +23,9 @@
                         <ol class="tg-breadcrumb">
                             <li><a href="#">Accueil</a></li>
                             <li><a href="/patient">Détails patient</a></li>
-                            <li class="active">Liste des docteurs de {{ $patient->name }}</li>
+                            <li class="active">Liste des docteurs</li>
+                            <li><a href="/patient/RdvList">Mes rendez-vous</a></li>
+                            <li><a href="/patient/payments">Montant payé</a></li>
                         </ol>
                     </div>
                 </div>
@@ -165,7 +42,8 @@
     <main id="main" class="tg-main-section tg-haslayout">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <!--
+                <div class="col-lg-10 col-md-3 col-sm-4 col-xs-12">
                     <aside id="tg-sidebar">
                         <div class="tg-widget tg-widget-accordions">
                             <h3>Menu patient</h3>
@@ -225,63 +103,67 @@
                         </div>
                     </aside>
                 </div>
-
-                <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12">
+-->
+                <div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">
                     <div class="tg-doctors-list tg-haslayout">
                         <div class="tg-view tg-grid-view">
                             <div class="row">
+                                <table style="border-color: transparent;"border="0" frame="void">
+                                    <tbody style="border-color: transparent;"border="0" frame="void">
+                                    <tr style="background-color: #1D628B;"border="0" frame="void">
+                                        <td style="border-color: transparent; color: white;"border="0" frame="void">
+                                            Nom
+                                        </td>
+                                        <td style="border-color: transparent; color: white;"border="0" frame="void">
+                                            Etablissement
+                                        </td>
+                                        <td style="border-color: transparent;color: white;"border="0" frame="void">
+                                            Spécialité
+                                        </td>
+                                        <td style="border-color: transparent; color: white;"border="0" frame="void">
+                                            Adresse
+                                        </td>
+                                        <td style="border-color: transparent; color: white;"border="0" frame="void">
+                                            Email
+                                        </td>
+                                        <td style="border-color: transparent;color: white;"border="0" frame="void">
+                                            Téléphone
+                                        </td>
+                                        <td style="border-color: transparent;color: white;"border="0" frame="void">
+                                            Dernier Rendez-vous
+                                        </td>
+                                        </tr>
+
+
                                 @foreach($doctors as $doctor)
-                                <article class="tg-doctor-profile">
-                                    <div class="tg-box">
-                                                <?php
-                                                $photo = $doctor->image;
+                                    <tr style="border-color: transparent;"border="0" frame="void">
+                                        <td style="border-color: transparent;"border="0" frame="void">
+                                            <a href="/details/{{ $doctor->id}}">{{ $doctor->name }}</a>
+                                        </td>
+                                        <td style="border-color: transparent;"border="0" frame="void">
+                                            {{ $doctor->nameE }}
+                                        </td>
+                                        <td style="border-color: transparent;"border="0" frame="void">
+                                            {{ $doctor->intituleProf }}
+                                        </td>
+                                        <td style="border-color: transparent;"border="0" frame="void">
+                                            {{ $doctor->address }}
+                                        </td>
+                                        <td style="border-color: transparent;"border="0" frame="void">
+                                            <a href="mailto:{{ $doctor->email}}">{{ $doctor->email }}</a>
+                                        </td>
+                                        <td style="border-color: transparent;"border="0" frame="void">
+                                            {{ $doctor->tel }}
+                                        </td>
+                                        <td style="border-color: transparent;"border="0" frame="void">
+                                            {{ $doctor->hour }}
+                                        </td>
+                                    </tr>
 
-                                                $dir = 'users/';
-                                                if(!empty($photo)){
-                                                    echo '<figure class="tg-docprofile-img"><a href="/details/{{ $doctor->id}}">';
-                                                    echo'<img src="'.$dir.$photo.'" height="250" width="240"
-            alt="image description"></a></figure>';
-                                                }
-                                                else{
-                                                    $photo = 'no-photo.PNG';
-                                                    echo ' <figure class="tg-docprofile-img"><a href="/details/{{ $doctor->id}}">';
-                                                    echo'<img src="'.$dir.$photo.'" height="250" width="240"
-            alt="image description"></a></figure>';
-                                                }
 
-                                                ?>
-
-                                        <span class="tg-featuredicon"><em class="fa fa-bolt"></em></span>
-                                        <div class="tg-docprofile-content">
-                                            <div class="tg-heading-border tg-small">
-                                                <h3><a href="/details/{{ $doctor->id}}">{{ $doctor->name }}</a></h3>
-                                            </div>
-                                            <div class="tg-description">
-                                                <p><h4 style="color: #00BFFF;">{{ $doctor->nameE }}</h4></p>
-                                            </div>
-                                            <ul class="tg-doccontactinfo">
-                                                <li>
-                                                    <i class="fa fa-user-md"></i>
-                                                    <span>{{ $doctor->intituleProf }}</span>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-map-marker"></i>
-                                                    <address>{{ $doctor->address }}</address>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-phone"></i>
-                                                    <span>{{ $doctor->tel }}</span>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-envelope-o"></i>
-                                                    <a href="mailto:{{ $doctor->email}}">{{ $doctor->email }}</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        Dernier rendez-vous: {{ $doctor->hour }}
-                                    </div>
-                                </article>
                                 @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
