@@ -42,19 +42,26 @@ class SecretaryPatientAnalysisController extends Controller
 
 
 
+        if (strstr($type->titre, 'labo' )){
         $phas = DB::table('patient_has_analyse')
             ->join('establishment', 'establishment.id', '=', 'patient_has_analyse.labo_id')
          //   ->join('users', 'users.id', '=', 'patient_has_analyse.doctor_id')
             ->join('patients', 'patients.id', '=', 'patient_has_analyse.patient_id')
-           // ->where('labo_id', '=', $ide)
+            ->where('labo_id', '=', $ide)
             ->orderBy('demandDate', 'desc')
             ->select( 'patient_has_analyse.*', 'establishment.nameE as labo', 'patients.name as patient')
             ->get();
-
-     /*   echo '<pre>';
-        print_r($phas);
-        exit();
-*/
+        }
+        else {
+            $phas = DB::table('patient_has_analyse')
+                ->join('establishment', 'establishment.id', '=', 'patient_has_analyse.labo_id')
+                //   ->join('users', 'users.id', '=', 'patient_has_analyse.doctor_id')
+                ->join('patients', 'patients.id', '=', 'patient_has_analyse.patient_id')
+                ->where('establishment_id', '=', $ide)
+                ->orderBy('demandDate', 'desc')
+                ->select( 'patient_has_analyse.*', 'establishment.nameE as labo', 'patients.name as patient')
+                ->get();
+        }
         foreach($phas as $pha){
             if($pha->establishment_id == 0){
                 $pha->estb = 'pas dans le système';
@@ -77,11 +84,6 @@ class SecretaryPatientAnalysisController extends Controller
             }
         }
 
-
-      /*   echo  '<pre>';
-         print_r($phas);
-         exit();*/
-
         foreach($phas as $pha){
             $id = $pha->id;
 
@@ -94,7 +96,6 @@ class SecretaryPatientAnalysisController extends Controller
             $pha->inds = $inds;
 
         }
-
 
         return view('backoffice.secretary.patientAnalysis.index')->with('phas', $phas)
             ->with('date', $date)
@@ -161,9 +162,14 @@ class SecretaryPatientAnalysisController extends Controller
         $indic = array();
 
         $indicators = Indicator::all();
-        $ests =  DB::table('establishment')
+        $labos=  DB::table('establishment')
             ->join('types', 'establishment.type_id', '=', 'types.id')
             ->where('types.titre', 'LIKE', '%labo%')
+            ->select('establishment.*')
+            ->get();
+        $ests = DB::table('establishment')
+            ->join('types', 'establishment.type_id', '=', 'types.id')
+            ->where('types.titre', 'NOT LIKE', '%labo%')
             ->select('establishment.*')
             ->get();
         return view('backoffice.secretary.patientAnalysis.create')->with('establishment', $establishment)
@@ -174,7 +180,8 @@ class SecretaryPatientAnalysisController extends Controller
             ->with('indicators', $indicators)
             ->with('indic', $indic)
             ->with('type', $type)
-            ->with('ests', $ests);
+            ->with('ests', $ests)
+            ->with('labos', $labos);
     }
 
     /**
@@ -354,9 +361,14 @@ class SecretaryPatientAnalysisController extends Controller
             ->select( 'users.*')
             ->get();
 
-        $ests =  DB::table('establishment')
+        $labos =  DB::table('establishment')
             ->join('types', 'establishment.type_id', '=', 'types.id')
             ->where('types.titre', 'LIKE', '%labo%')
+            ->select('establishment.*')
+            ->get();
+        $ests =  DB::table('establishment')
+            ->join('types', 'establishment.type_id', '=', 'types.id')
+            ->where('types.titre', 'NOT LIKE', '%labo%')
             ->select('establishment.*')
             ->get();
         $indicators = Indicator::all();
@@ -369,6 +381,7 @@ class SecretaryPatientAnalysisController extends Controller
             ->with('patients', $patients)
             ->with('establishment', $establishment)
             ->with('ests', $ests)
+            ->with('labos', $labos)
             ->with('indicators', $indicators);
 
     }

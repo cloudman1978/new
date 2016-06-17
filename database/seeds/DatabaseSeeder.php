@@ -672,6 +672,78 @@ class UserTableSeeder extends Seeder
             'establishment_id' => '5',
 
         ]);
+        DB::table('users')->insert([
+            'name' => 'Ali ACHOURI',
+            'email' => 'ali@generikatn.com',
+            'password' => bcrypt('achouri'),
+            'tel' => '+216  98 351 811',
+            'role' => '20',
+            'gradeHonor' => 'Formation: ESIA tunisie - Précédent: Opalia pharma',
+            'speciality_id' => '9',
+            'establishment_id' => '9',
+
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Ali ACHOURI',
+            'email' => 'ali@generikatn.com',
+            'password' => bcrypt('achouri'),
+            'tel' => '+216  98 351 811',
+            'role' => '20',
+            'gradeHonor' => 'Formation: ESIA tunisie - Précédent: Opalia pharma',
+            'speciality_id' => '9',
+            'establishment_id' => '9',
+
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Asma SALEM',
+            'email' => 'asma.s@gmail.com',
+            'password' => bcrypt('asmasalem'),
+            'tel' => '+216  52 564 880',
+            'role' => '20',
+            'gradeHonor' => 'Formation: Licence fondamentale en biolochimie',
+            'speciality_id' => '8',
+            'establishment_id' => '7',
+
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Salma Zemmali',
+            'email' => 'salmaZ@pharma.com',
+            'password' => bcrypt('salma123'),
+            'tel' => '+216  20 997 129',
+            'role' => '20',
+            'gradeHonor' => 'Formation: Licence fondamentale en biochimie',
+            'speciality_id' => '8',
+            'establishment_id' => '8',
+
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Wafa ABED',
+            'email' => 'wafaA@cooper.com',
+            'password' => bcrypt('wafa123'),
+            'tel' => '+216  43 927 129',
+            'role' => '20',
+            'gradeHonor' => 'Formation: Licence appliquée en biochimie',
+            'speciality_id' => '8',
+            'establishment_id' => '6',
+
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Kawthar JBALI',
+            'email' => 'kawthar@jasmains.com',
+            'password' => bcrypt('kawthar'),
+            'tel' => '+216  52 997 120',
+            'role' => '20',
+            'gradeHonor' => 'Formation: Licence fondamentale en radiologie',
+            'speciality_id' => '54',
+            'establishment_id' => '10',
+
+        ]);
+
+
     }}
 
 class EstablishmentTableSeeder extends Seeder
@@ -1064,6 +1136,403 @@ class EstablishmentTableSeeder extends Seeder
             'horaire' => serialize($tab),
 
         ]);
+
+        $tab =Array
+        (
+            'jours' => [
+                0 => 0,
+                1 => 1,
+                2 => 2,
+                3 => 3,
+                4 => 4
+            ],
+
+            'freq' => [60], 'time' => Array(
+                0 => Array
+                (
+                    'matin' => Array
+                    ('deb' => "08:00", 'fin' => "15:00")
+                ),
+                1 => Array(
+                    'matin' => Array('deb' => "08:00", 'fin' => "15:00")
+                ),
+
+                2 => Array
+                (
+                    'matin' => Array
+                    ('deb' =>"08:00", 'fin' => "15:00")
+                ),
+                3 => Array
+                ('matin' => Array(
+                        'deb' => "08:00", 'fin' => "15:00")
+                   ),
+                4 => Array('matin' => Array
+                ('deb' => "08:00", 'fin' => "13:00")
+
+                )));
+
+        DB::table('establishment')->insert([
+            'nameE' => 'Laboratoire Cooper Pharma',
+            'address' => ' 	Rue Du Lac BIWA; Res. Meriem - les Berges du Lac - Tunis, Gouvernorat de Tunis, Tunisie',
+            'textLatlng' => '36.832923, 10.237564',
+            'email' => 'hizaoui.cooper@yahoo.fr',
+            'tel' => '00 216 71 964 639',
+            'tel1' => '00 216 71 964 596',
+            'type_id' => '4',
+            'logo' => 'cooper.PNG',
+            'horaire' => serialize($tab),
+
+        ]);
+
+        $tab =Array
+        (
+            'jours' => [
+                0 => 0,
+                1 => 1,
+                2 => 2,
+                3 => 3,
+                4 => 4
+            ],
+
+            'freq' => [60], 'time' => Array(
+                0 => Array
+                (
+                    'matin' => Array
+                    ('deb' => "08:00", 'fin' => "15:00")
+                ),
+                1 => Array(
+                    'matin' => Array('deb' => "08:00", 'fin' => "15:00")
+                ),
+
+                2 => Array
+                (
+                    'matin' => Array
+                    ('deb' =>"08:00", 'fin' => "15:00")
+                ),
+                3 => Array
+                ('matin' => Array(
+                        'deb' => "08:00", 'fin' => "15:00")
+                ),
+                4 => Array('matin' => Array
+                ('deb' => "08:00", 'fin' => "13:00")
+
+                )));
+
+        DB::table('establishment')->insert([
+            'nameE' => 'Laboratoire Hikma Ibn Al Baytar ',
+            'address' => ' 	Avenue Habib BOURGUIBA - Ariana, Gouvernorat de Ariana, Tunisie',
+            'textLatlng' => '36.846237, 10.183713',
+            'email' => '	ibn.albaytar@planet.tn',
+            'tel' => '00 216 71 552 292',
+            'tel1' => '00 216 71 552 442',
+            'type_id' => '4',
+            'logo' => 'hikmaibnbaytar.jpg',
+            'horaire' => serialize($tab),
+
+        ]);
+
+        $tab =Array
+        (
+            'jours' => [
+                0 => 0,
+                1 => 1,
+                2 => 2,
+                3 => 3,
+                4 => 4
+            ],
+
+            'freq' => [60], 'time' => Array(
+                0 => Array
+                (
+                    'matin' => Array
+                    ('deb' => "08:00", 'fin' => "13:00"),
+                    'soir' => Array
+                    ('deb' => "15:00", 'fin' => "18:00")),
+                ),
+                1 => Array(
+                    'matin' => Array('deb' => "08:00", 'fin' => "13:00"),
+                    'soir' => Array
+                    ('deb' => "15:00", 'fin' => "18:00")),
+
+                2 => Array
+                (
+                    'matin' => Array
+                    ('deb' =>"08:00", 'fin' => "13:00"),
+                    'soir' => Array
+                    ('deb' => "15:00", 'fin' => "18:00")),
+                3 => Array
+                ('matin' => Array(
+                        'deb' => "08:00", 'fin' => "13:00"),
+                    'soir' => Array
+                    ('deb' => "15:00", 'fin' => "18:00")),
+                4 => Array('matin' => Array
+                ('deb' => "08:00", 'fin' => "13:00"),
+                    'soir' => Array
+                    ('deb' => "15:00", 'fin' => "18:00"))
+                );
+
+        DB::table('establishment')->insert([
+            'nameE' => 'Laboratoire Pharma Sud ',
+            'address' => ' 		Route de Mornag - Gouvernorat de Ben Arous, Tunisie',
+            'textLatlng' => '36.714385, 10.262454',
+           // 'email' => '	ibn.albaytar@planet.tn',
+            'tel' => '00 216 71 386 912',
+            'tel1' => '00 216 71 386 715',
+            'type_id' => '4',
+            'logo' => 'pharmasud.jpg',
+            'horaire' => serialize($tab),
+
+        ]);
+
+
+        $tab =Array
+        (
+            'jours' => [
+                0 => 0,
+                1 => 1,
+                2 => 2,
+                3 => 3,
+                4 => 4
+            ],
+
+            'freq' => [60], 'time' => Array(
+                0 => Array
+                (
+                    'matin' => Array
+                    ('deb' => "08:00", 'fin' => "15:00")
+                ),
+                1 => Array(
+                    'matin' => Array('deb' => "08:00", 'fin' => "15:00")
+                ),
+
+                2 => Array
+                (
+                    'matin' => Array
+                    ('deb' =>"08:00", 'fin' => "15:00")
+                ),
+                3 => Array
+                ('matin' => Array(
+                        'deb' => "08:00", 'fin' => "15:00")
+                ),
+                4 => Array('matin' => Array
+                ('deb' => "08:00", 'fin' => "13:00")
+
+                )));
+
+        DB::table('establishment')->insert([
+            'nameE' => 'Laboratoire Generika ',
+            'address' => ' 6, Rue du Maroc, 2080- Gouvernorat de Ariana, Tunisie',
+            'textLatlng' => '36.990779, 10.127910',
+             'email' => '	info@generikatn.com',
+            'tel' => '00 216 71 876 224',
+            'tel1' => '00 216 98 351 811',
+            'type_id' => '4',
+            'logo' => 'generika.PNG',
+            'horaire' => serialize($tab),
+
+        ]);
+
+        $tab =Array
+        (
+            'jours' => [
+                0 => 0,
+                1 => 1,
+                2 => 2,
+                3 => 3,
+                4 => 4
+            ],
+
+            'freq' => [60], 'time' => Array(
+                0 => Array
+                (
+                    'matin' => Array
+                    ('deb' => "08:00", 'fin' => "15:00")
+                ),
+                1 => Array(
+                    'matin' => Array('deb' => "08:00", 'fin' => "15:00")
+                ),
+
+                2 => Array
+                (
+                    'matin' => Array
+                    ('deb' =>"08:00", 'fin' => "15:00")
+                ),
+                3 => Array
+                ('matin' => Array(
+                        'deb' => "08:00", 'fin' => "15:00")
+                ),
+                4 => Array('matin' => Array
+                ('deb' => "08:00", 'fin' => "13:00")
+
+                )));
+
+        DB::table('establishment')->insert([
+            'nameE' => 'Policlinique Jasmins ',
+            'address' => ' Centre Urbain Nord – Tunis - Gouvernorat de Tunis, Tunisie',
+            'textLatlng' => '36.846646, 10.198064',
+            'email' => 'contact@polycliniquelesjasmins.com.tn',
+            'tel' => '00 216 36 089 000',
+            'tel1' => '00 216 36 087 000',
+            'type_id' => '18',
+            'logo' => 'jasmins.PNG',
+            'horaire' => serialize($tab),
+
+        ]);
+
+        $tab =Array
+        (
+            'jours' => [
+                0 => 0,
+                1 => 1,
+                2 => 2,
+                3 => 3,
+                4 => 4
+            ],
+
+            'freq' => [45], 'time' => Array(
+                0 => Array
+                (
+                    'matin' => Array
+                    ('deb' => "08:00", 'fin' => "17:30")
+                ),
+                1 => Array(
+                    'matin' => Array('deb' => "08:00", 'fin' => "17:30")
+                ),
+
+                2 => Array
+                (
+                    'matin' => Array
+                    ('deb' =>"08:00", 'fin' => "17:30")
+                ),
+                3 => Array
+                ('matin' => Array(
+                        'deb' => "08:00", 'fin' => "17:30")
+                ),
+                4 => Array('matin' => Array
+                ('deb' => "08:00", 'fin' => "17:30")
+
+                )));
+
+        DB::table('establishment')->insert([
+            'nameE' => 'Clinique Taoufik ',
+            'address' => 'Boulevard Mohamed Bouazizi El Menzah 1004 - Tunis - Gouvernorat de Tunis, Tunisie',
+            'textLatlng' => '36.831551, 10.155777',
+            'email' => 'contact@polyclinique-taoufik.com',
+            'tel' => '00 216 71 143 000',
+            'tel1' => '00 216 94 856 690',
+            'type_id' => '2',
+            'logo' => 'taoufikcl.PNG',
+            'horaire' => serialize($tab),
+
+        ]);
+
+
+        $tab =Array
+        (
+            'jours' => [
+                0 => 0,
+                1 => 1,
+                2 => 2,
+                3 => 3,
+                4 => 4,
+                5 => 5
+            ],
+
+            'freq' => [60], 'time' => Array(
+                0 => Array
+                (
+                    'matin' => Array
+                    ('deb' => "08:00", 'fin' => "13:00"),
+                    'soir' => Array
+                    ('deb' => "15:00", 'fin' => "23:00")),
+            ),
+            1 => Array(
+                'matin' => Array('deb' => "08:00", 'fin' => "13:00"),
+                'soir' => Array
+                ('deb' => "15:00", 'fin' => "23:00")),
+
+            2 => Array
+            (
+                'matin' => Array
+                ('deb' =>"08:00", 'fin' => "13:00"),
+                'soir' => Array
+                ('deb' => "15:00", 'fin' => "23:00")),
+            3 => Array
+            ('matin' => Array(
+                    'deb' => "08:00", 'fin' => "13:00"),
+                'soir' => Array
+                ('deb' => "15:00", 'fin' => "23:00")),
+            4 => Array('matin' => Array
+            ('deb' => "08:00", 'fin' => "13:00"),
+                'soir' => Array
+                ('deb' => "15:00", 'fin' => "23:00")),
+            5 => Array
+            ('matin' => Array(
+                    'deb' => "08:00", 'fin' => "13:00"),
+                'soir' => Array
+                ('deb' => "15:00", 'fin' => "23:00"))
+        );
+
+        DB::table('establishment')->insert([
+            'nameE' => 'Clinique Hannibal ',
+            'address' => 'Cité les pins,les berges du lac 2 Tunis  - Gouvernorat de Tunis, Tunisie',
+            'textLatlng' => '336.845321, 10.283881',
+             'email' => '	contact@cliniquehannibal.com',
+            'tel' => '00 216 71 137 400',
+            'tel1' => '00 216 71 137 405',
+            'type_id' => '4',
+            'logo' => 'hannibalcl.PNG',
+            'horaire' => serialize($tab),
+
+        ]);
+
+        $tab =Array
+        (
+            'jours' => [
+                0 => 0,
+                1 => 1,
+                2 => 2,
+                3 => 3,
+                4 => 4
+            ],
+
+            'freq' => [45], 'time' => Array(
+                0 => Array
+                (
+                    'matin' => Array
+                    ('deb' => "08:00", 'fin' => "17:30")
+                ),
+                1 => Array(
+                    'matin' => Array('deb' => "08:00", 'fin' => "17:30")
+                ),
+
+                2 => Array
+                (
+                    'matin' => Array
+                    ('deb' =>"08:00", 'fin' => "17:30")
+                ),
+                3 => Array
+                ('matin' => Array(
+                        'deb' => "08:00", 'fin' => "17:30")
+                ),
+                4 => Array('matin' => Array
+                ('deb' => "08:00", 'fin' => "17:30")
+
+                )));
+
+        DB::table('establishment')->insert([
+            'nameE' => 'Clinique Alyssa ',
+            'address' => 'Boulevard Mohamed Bouazizi El Menzah 1004 - Tunis - Gouvernorat de Tunis, Tunisie',
+            'textLatlng' => '36.831551, 10.155777',
+            'email' => ' clinique.alyssa@gnet.tn',
+            'tel' => '00 216 71 962 555',
+            'tel1' => '00  71 961 385',
+            'type_id' => '2',
+            'logo' => 'alyssa.PNG',
+            'horaire' => serialize($tab),
+
+        ]);
+
     }}
 class InsuranceTableSeeder extends Seeder
 {

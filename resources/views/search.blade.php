@@ -23,11 +23,11 @@
 
             <!--content-->
     @if(!empty($users))
-                                    <div class="tg-pagination">
+                               <!--     <div class="tg-pagination">
                                         <?php
-                                        $perPage = 10;
-                                        $cPage=1;
-                                        $connection = mysqli_connect("localhost","root","","pfe");
+                                       // $perPage = 10;
+                                     //   $cPage=1;
+                                     //   $connection = mysqli_connect("localhost","root","","pfe");
                                         ?>
                                         <ul>
                                             <li>
@@ -43,6 +43,7 @@
                                             </li>
                                         </ul>
                                     </div>
+                                    -->
         <?php $idc = 0; ?>
 
         @foreach($users as $user)
@@ -124,6 +125,8 @@
             </script>
 
             @endforeach
+                                {!! $users->render() !!}
+                                {!! $users->appends(['sort' => 'name'])->render() !!}
             @else
                 Aucun résultat trouvé
 

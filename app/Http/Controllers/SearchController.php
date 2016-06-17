@@ -130,7 +130,7 @@ class SearchController extends Controller
                 $users->where('users.speciality_id', '=', $spec);
             }
            // $req = $users;
-            $users = $users->get();
+            $users = $users->paginate(1);
             $tot = $users->count();
 
             foreach($users as $k=>$user){
@@ -196,7 +196,7 @@ class SearchController extends Controller
             }
             $tot = $users->count();
             $req = $users;
-            $users = $users->get();
+            $users = $users->paginate(1);
             foreach($users as $user)
             {
                 $rdvs = DB::table('rdv')->where('rdv.user_id', '=', $user->id)

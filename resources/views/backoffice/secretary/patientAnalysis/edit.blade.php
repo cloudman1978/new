@@ -353,6 +353,23 @@
                                     <div class="col-md-6 ph10">
                                         <input type="hidden" value="{{$pha->establishment_id}}" name="lastEstablishment">
                                         <div class="form-group{{ $errors->has('establishment_id') ? ' has-error' : '' }}" style="color:red;">
+                                            @if(strstr($type->titre, 'labo') )
+                                                <label  class="field select">
+                                                    <input type="hidden" value="{{$pha->establishment_id}}" name="lastestab">
+                                                    <select name="establishment_id" id="establishment_id_id" style='display:inline'>
+                                                        <option value="-1">Choisissez le cabinet demandant s'il vous plaît</option>
+                                                        @foreach($ests as $est)
+                                                            @if($est->id <> 1)
+                                                                <option value="{{ $est->id }}">{{ $est->nameE }}</option>
+                                                            @endif
+                                                        @endforeach
+
+                                                    </select>
+
+                                                    <i class="arrow"></i>
+                                                    <br clear="all">
+                                                </label>
+                                            @else
                                             <label for="establishment_id" class="field prepend-icon">
                                                 <input type="hidden" id="establishment_id" name="establishment_id"
                                                        class="gui-input" value="{{ $establishment->id }}">
@@ -362,10 +379,22 @@
                                                     <i class="fa fa-hospital-o"></i>
                                                 </label>
                                             </label>
+                                                @endif
                                         </div><br clear="all">
                                     </div></div>
 
                                 <div class="section">
+                                    @if(strstr($type->titre, 'labo') )
+                                        <label for="labo_id" class="field prepend-icon">
+                                            <input type="hidden" id="labo" name="labo_id"
+                                                   class="gui-input" value="{{ $establishment->id }}">
+                                            <input type="text" id="labo_name" name="labo_name"
+                                                   class="gui-input" value="{{ $establishment->nameE }}">
+                                            <label class="field-icon" for="establishment_id">
+                                                <i class="fa fa-hospital-o"></i>
+                                            </label>
+                                        </label>
+                                    @else
                                     <input type="hidden" value="{{$pha->labo_id}}" name="lastLabo">
                                     <label  class="field select">
 
@@ -380,6 +409,7 @@
                                         <i class="arrow"></i>
                                         <br clear="all">
                                     </label>
+                                        @endif
                                 </div>
                                 <div class="section">
 
