@@ -1761,6 +1761,122 @@ class EstablishmentHasSpecialityTableSeeder extends Seeder
             'establishment_id' => 5,
 
         ]);
+
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => ,
+            'establishment_id' => 11,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => ,
+            'establishment_id' => 11,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => ,
+            'establishment_id' => 11,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => ,
+            'establishment_id' => 11,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => ,
+            'establishment_id' => 11,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => ,
+            'establishment_id' => 11,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 16,
+            'establishment_id' => 11,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 12,
+            'establishment_id' => 11,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 46,
+            'establishment_id' => 11,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 43,
+            'establishment_id' => 11,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 56,
+            'establishment_id' => 11,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 64,
+            'establishment_id' => 11,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 39,
+            'establishment_id' => 11,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 27,
+            'establishment_id' => 12,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 19,
+            'establishment_id' => 12,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 54,
+            'establishment_id' => 12,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 56,
+            'establishment_id' => 12,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 46,
+            'establishment_id' => 12,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 14,
+            'establishment_id' => 12,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 15,
+            'establishment_id' => 12,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 16,
+            'establishment_id' => 12,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 22,
+            'establishment_id' => 12,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 20,
+            'establishment_id' => 12,
+
+        ]);
     }}
 
 class IndicatorTableSeeder extends Seeder
