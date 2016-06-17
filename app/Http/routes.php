@@ -194,14 +194,14 @@ Route::group(['middleware' => ['web']], function () {
 // front office **************************
 
 Route::resource('/', 'WelcomeController');
-//Route::post('search', 'SearchController@search');
-    Route::post('search', function () {
+Route::post('search', 'SearchController@search');
+  /*  Route::post('search', function () {
         $users = App\User::paginate(3);
 
         $users->setPath('search/');
 
         //
-    });
+    });*/
 
 Route::get('details/{establishment}', 'SearchController@details');
 Route::get('rdv1/{user}', 'RDVController@step1');

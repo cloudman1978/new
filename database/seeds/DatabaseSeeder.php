@@ -463,6 +463,11 @@ class SpecialityTableSeeder extends Seeder
                 'intituleProf'=>'Urologue',
 
             ]);
+        DB::table('specialities')->insert([
+            'intituleEtab'=>'Oncologie',
+            'intituleProf'=>'Oncologue',
+
+        ]);
     }
 
 }
@@ -672,17 +677,6 @@ class UserTableSeeder extends Seeder
             'establishment_id' => '5',
 
         ]);
-        DB::table('users')->insert([
-            'name' => 'Ali ACHOURI',
-            'email' => 'ali@generikatn.com',
-            'password' => bcrypt('achouri'),
-            'tel' => '+216  98 351 811',
-            'role' => '20',
-            'gradeHonor' => 'Formation: ESIA tunisie - Précédent: Opalia pharma',
-            'speciality_id' => '9',
-            'establishment_id' => '9',
-
-        ]);
 
         DB::table('users')->insert([
             'name' => 'Ali ACHOURI',
@@ -740,6 +734,55 @@ class UserTableSeeder extends Seeder
             'gradeHonor' => 'Formation: Licence fondamentale en radiologie',
             'speciality_id' => '54',
             'establishment_id' => '10',
+
+        ]);
+
+
+        DB::table('users')->insert([
+            'name' => 'Mohamed FERCHICHI',
+            'email' => 'med@taoufik.com',
+            'password' => bcrypt('med123'),
+            'tel' => '+216  56 234 000',
+            'role' => '20',
+            'gradeHonor' => 'Faculté de médecine de Tunis - Tunisie',
+            'speciality_id' => '64',
+            'establishment_id' => '11',
+
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Rayan TEKAYA',
+            'email' => 'rayan@hannibal.com',
+            'password' => bcrypt('rayan123'),
+            'tel' => '+216  98 756 200',
+            'role' => '20',
+            'gradeHonor' => 'Faculté de médecine de Paris - France',
+            'speciality_id' => '35',
+            'establishment_id' => '12',
+
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Hana BOUGHARIOU',
+            'email' => 'hanaB@hannibal.com',
+            'password' => bcrypt('hana123'),
+            'tel' => '+216  97 756 200',
+            'role' => '20',
+            'gradeHonor' => 'Faculté de médecine de Paris - France',
+            'speciality_id' => '35',
+            'establishment_id' => '12',
+
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Hanen BEN FATMA',
+            'email' => 'hanenBF@alyssa.com',
+            'password' => bcrypt('hanen'),
+            'tel' => '+216  92 700 207',
+            'role' => '20',
+            'gradeHonor' => 'Faculté de médecine de Grenoble - France',
+            'speciality_id' => '35',
+            'establishment_id' => '12',
 
         ]);
 
@@ -1761,195 +1804,168 @@ class EstablishmentHasSpecialityTableSeeder extends Seeder
             'establishment_id' => 5,
 
         ]);
-
-
         DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => ,
+            'speciality_id' => 48,
+            'establishment_id' => 6,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 48,
+            'establishment_id' => 7,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 9,
+            'establishment_id' => 7,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 9,
+            'establishment_id' => 8,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 48,
+            'establishment_id' => 8,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 48,
             'establishment_id' => 9,
 
         ]);
         DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => ,
+            'speciality_id' => 9,
             'establishment_id' => 9,
 
         ]);
         DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => ,
+            'speciality_id' => 8,
             'establishment_id' => 9,
 
         ]);
         DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => ,
-            'establishment_id' => 9,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => ,
-            'establishment_id' => 9,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => ,
-            'establishment_id' => 9,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 22,
-            'establishment_id' => 9,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 17,
-            'establishment_id' => 9,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 14,
-            'establishment_id' => 9,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 16,
-            'establishment_id' => 9,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 15,
-            'establishment_id' => 9,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 18,
-            'establishment_id' => 9,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 44,
-            'establishment_id' => 9,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 19,
-            'establishment_id' => 9,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 20,
-            'establishment_id' => 9,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 20,
+            'speciality_id' => 55,
             'establishment_id' => 10,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 44,
-            'establishment_id' => 10,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 27,
-            'establishment_id' => 10,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 65,
-            'establishment_id' => 10,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 26,
-            'establishment_id' => 10,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 11,
-            'establishment_id' => 10,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 45,
-            'establishment_id' => 10,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 12,
-            'establishment_id' => 10,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 66,
-            'establishment_id' => 11,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 16,
-            'establishment_id' => 11,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 12,
-            'establishment_id' => 11,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 46,
-            'establishment_id' => 11,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 43,
-            'establishment_id' => 11,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 56,
-            'establishment_id' => 11,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 64,
-            'establishment_id' => 11,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 39,
-            'establishment_id' => 11,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 27,
-            'establishment_id' => 12,
-
-        ]);
-        DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 19,
-            'establishment_id' => 12,
 
         ]);
         DB::table('establishment_has_speciality')->insert([
             'speciality_id' => 54,
-            'establishment_id' => 12,
+            'establishment_id' => 10,
 
         ]);
         DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 56,
-            'establishment_id' => 12,
+            'speciality_id' => 57,
+            'establishment_id' => 10,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 37,
+            'establishment_id' => 10,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 50,
+            'establishment_id' => 10,
 
         ]);
         DB::table('establishment_has_speciality')->insert([
             'speciality_id' => 46,
-            'establishment_id' => 12,
+            'establishment_id' => 10,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 27,
+            'establishment_id' => 10,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 22,
+            'establishment_id' => 10,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 17,
+            'establishment_id' => 10,
 
         ]);
         DB::table('establishment_has_speciality')->insert([
             'speciality_id' => 14,
-            'establishment_id' => 12,
+            'establishment_id' => 10,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 16,
+            'establishment_id' => 10,
 
         ]);
         DB::table('establishment_has_speciality')->insert([
             'speciality_id' => 15,
+            'establishment_id' => 10,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 18,
+            'establishment_id' => 10,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 44,
+            'establishment_id' => 10,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 19,
+            'establishment_id' => 10,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 20,
+            'establishment_id' => 10,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 20,
+            'establishment_id' => 11,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 44,
+            'establishment_id' => 11,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 27,
+            'establishment_id' => 11,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 65,
+            'establishment_id' => 11,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 26,
+            'establishment_id' => 11,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 11,
+            'establishment_id' => 11,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 45,
+            'establishment_id' => 11,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 12,
+            'establishment_id' => 11,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 66,
             'establishment_id' => 12,
 
         ]);
@@ -1959,13 +1975,83 @@ class EstablishmentHasSpecialityTableSeeder extends Seeder
 
         ]);
         DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 22,
+            'speciality_id' => 12,
             'establishment_id' => 12,
 
         ]);
         DB::table('establishment_has_speciality')->insert([
-            'speciality_id' => 20,
+            'speciality_id' => 46,
             'establishment_id' => 12,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 43,
+            'establishment_id' => 12,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 56,
+            'establishment_id' => 12,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 64,
+            'establishment_id' => 12,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 39,
+            'establishment_id' => 12,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 27,
+            'establishment_id' => 13,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 19,
+            'establishment_id' => 13,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 54,
+            'establishment_id' => 13,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 56,
+            'establishment_id' => 13,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 46,
+            'establishment_id' => 13,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 14,
+            'establishment_id' => 13,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 15,
+            'establishment_id' => 13,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 16,
+            'establishment_id' => 13,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 22,
+            'establishment_id' => 13,
+
+        ]);
+        DB::table('establishment_has_speciality')->insert([
+            'speciality_id' => 20,
+            'establishment_id' => 13,
 
         ]);
     }}

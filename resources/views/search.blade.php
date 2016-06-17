@@ -125,8 +125,6 @@
             </script>
 
             @endforeach
-                                {!! $users->render() !!}
-                                {!! $users->appends(['sort' => 'name'])->render() !!}
             @else
                 Aucun résultat trouvé
 
