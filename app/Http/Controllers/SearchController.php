@@ -130,7 +130,8 @@ class SearchController extends Controller
                 $users->where('users.speciality_id', '=', $spec);
             }
             // $req = $users;
-            $users = $users->get();
+            //$users = $users->get();
+            $users = $users->paginate(5);
             $tot = $users->count();
 
             foreach($users as $k=>$user){
@@ -154,6 +155,14 @@ class SearchController extends Controller
                 $coord[]['long'] = $longitude;
             }
             $specialities = Speciality::all();
+
+            $users->appends(array(
+                'address' => $inputs['address'],
+                'speciality'   => $inputs['speciality'],
+                'name'   => $inputs['name'],
+                'lat' => $inputs['lat'],
+                'long' => $inputs['long'],
+            ));
             return view('search')
                 ->with('users', $users)
                 ->with('specialities', $specialities)
@@ -165,6 +174,13 @@ class SearchController extends Controller
             $users = array();
             $tot =0;
             $specialities = Speciality::all();
+       /*     $specialities->appends(array(
+                'address' => $inputs['address'],
+                'speciality'   => $inputs['speciality'],
+                'name'   => $inputs['name'],
+                'lat' => $inputs['lat'],
+                'long' => $inputs['long'],
+            ));**/
             return view('search')
                 ->with('users', $users)
                 ->with('specialities', $specialities)
@@ -196,7 +212,8 @@ class SearchController extends Controller
             }
             $tot = $users->count();
             $req = $users;
-            $users = $users->get();
+            //$users = $users->get();
+            $users = $users->paginate(5);
             foreach($users as $user)
             {
                 $rdvs = DB::table('rdv')->where('rdv.user_id', '=', $user->id)
@@ -212,11 +229,21 @@ class SearchController extends Controller
             /*  print_r($user);
               exit();*/
             $specialities = Speciality::all();
-            return view('search')
+            $users->appends(array(
+                'address' => $inputs['address'],
+                'speciality'   => $inputs['speciality'],
+                'name'   => $inputs['name'],
+                'lat' => $inputs['lat'],
+                'long' => $inputs['long'],
+            ));
+            return view('search'
+                //, ['users' => $users]
+                )
                 ->with('users', $users)
                 ->with('specialities', $specialities)
                 ->with('coord', $coord)->with('tot', $tot)
-                ->with('req', $req);
+                ->with('req', $req)
+                ->render();
 
         }
 

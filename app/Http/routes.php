@@ -202,6 +202,15 @@ Route::post('search', 'SearchController@search');
 
         //
     });*/
+    Route::get('search', [
+        'uses' => 'SearchController@search',
+    ],
+        function(){
+
+        return App\User::paginate();
+    });
+
+    Route::get('search', array('uses' => 'SearchController@search'));
 
 Route::get('details/{establishment}', 'SearchController@details');
 Route::get('rdv1/{user}', 'RDVController@step1');

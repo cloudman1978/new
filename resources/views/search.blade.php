@@ -125,6 +125,7 @@
             </script>
 
             @endforeach
+                                <?php echo $users->render(); ?>
             @else
                 Aucun résultat trouvé
 
