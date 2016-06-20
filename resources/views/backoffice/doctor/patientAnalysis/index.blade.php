@@ -358,10 +358,6 @@
 
                                     </span>
                                 </th>
-                                <th class="">Indicateurs
-                                        <span class="footbale-sort-indicator">
-
-                                    </span> </th>
                                 <th class="footable-sortable">Modifier
                                 </th>
                             </tr>
@@ -378,11 +374,6 @@
                                     <td>{{$pha->estb}}</td>
                                     <td>{{$pha->labo}}</td>
 
-                                    <td>
-                                        @foreach($pha->inds as $ind)
-                                            {{ $ind->name }} <br>
-                                        @endforeach
-                                    </td>
                                     <td>
 
                                             <a href="/backoffice/doctor/patientAnalysis/{{$pha->id}}/viewRes"

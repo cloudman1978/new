@@ -222,10 +222,24 @@
                                         <select name="state" required="true" value="{{ $rdv->state }}"  class="gui-input"
                                                 placeholder="Donner l'état du rendez-vous...">
 
-                                            <option value="10">Non validé</option>
-                                            <option value="20">Validé</option>
-                                            <option value="30">Payé</option>
-                                            <option value="40">Abandonné</option>
+                                            @if($rdv->state == 10)
+                                                <option value="10" selected >Non validé</option>
+                                            @else
+                                                <option value="10">Non validé</option>
+                                            @endif
+                                            @if($rdv->state == 20)
+                                                <option value="20" selected>Validé</option>
+                                            @endif
+                                            @if($rdv->state == 30)
+                                                <option value="30" selected>Payé</option>
+                                            @else
+                                                <option value="30">Payé</option>
+                                            @endif
+                                            @if($rdv->state == 40)
+                                                <option value="40" selected>Abandonné</option>
+                                            @else
+                                                <option value="40">Abandonné</option>
+                                            @endif
                                         </select>
                                         <i class="arrow"></i>
                                         <br clear="all">

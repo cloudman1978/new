@@ -423,7 +423,11 @@ google.maps.event.addDomListener(window, 'load', initialiserCarte);
 
                                                     <select  name="type_id" id="type" required=true value="{{ old('type_id') }}"> 
                                                     @foreach($types as $type)
-                                                    <option value="{{$type->id}}">{{$type->titre}}</option>
+                                                        @if($establishment->type_id == $type->id)
+                                                    <option value="{{$type->id}}" selected>{{$type->titre}}</option>
+                                                            @else
+                                                                <option value="{{$type->id}}">{{$type->titre}}</option>
+                                                            @endif
                                                       @endforeach  
                                                     </select>
                                                      <i class="arrow"></i>

@@ -1,6 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
+function loadUrl($url)
+{
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
+    $response = curl_exec($ch);
+    curl_close($ch);
+    return $response;
+}
 
 use App\AnalysePredef;
 use App\Indicator;
@@ -553,6 +565,22 @@ class SecretaryPatientAnalysisController extends Controller
 
 
         }}
+
+        $lab = $pha->labo_id;
+        $l = Establishment::find($lab);
+
+        $p = $pha->patient_id;
+        $pat = Patient::find($p);
+
+        $destination = $pat->tel;
+        //   $chaine='abcdefghijklmnopqrstuvwxyz0123456789';
+        //    $melange=str_shuffle($chaine);
+       // $melange = 'votre analyse est prête chez le laboratoire'.$l->nameE;
+        $message = 'votre analyse est prête chez le laboratoire'.$l->nameE;
+        $result = loadUrl("http://bulksms.l-2t.com/Api/Api.aspx?fct=sms&key=/-/C14ZwJAfiauwNNJ4fP0AZ4mPITSDf2JM9fW3IiNOg7Xayci2FtGgPEVjdj0TR5VswgJbw1G/-/pDV7m/-/Q3rcqWg==&mobile=216".$destination."&sms=".$message."&sender=Gourmandeal");
+        var_dump($result);
+
+       //  mail ( $pat->email , 'Notification analyse' ,'votre analyse est prête chez le laboratoire'.$l->nameE );
 
         return redirect()->route('backoffice.secretary.patientAnalysis.index');
         /// mettre le resultat dans inds et puis save

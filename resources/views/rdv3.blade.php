@@ -290,7 +290,7 @@
 
                         <div class="tg-doc-feature">
                             <div class="tg-heading-border tg-small">
-                                <h3>Vérifiez le code reçu par mail s'il vous plaît!</h3>
+                                <h3>Vérifiez le code reçu par sms s'il vous plaît!</h3>
                             </div>
                             <div class="tg-description">
 

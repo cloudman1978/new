@@ -296,11 +296,23 @@
                                                 <label  class="field select"> 
                                                
 
-                                                    <select  name="role" id="role" required=true value="{{ $user->gradeHonor }} "> 
+                                                    <select  name="role" id="role" required=true value="{{ $user->role }} ">
                                                     <option value="0">Veuillez selectionner le role de l'utilisateur ...</option>
-                                                        <option value="10">Admin</option>
-                                                        <option value="20">Professionnel</option>
-                                                        <option value="30">Sécrétaire</option>
+                                                        @if($user->role == 10)
+                                                        <option value="10" selected>Admin</option>
+                                                        @else
+                                                            <option value="10">Admin</option>
+                                                        @endif
+                                                        @if($user->role == 20)
+                                                        <option value="20" selected>Professionnel</option>
+                                                        @else
+                                                            <option value="20">Professionnel</option>
+                                                        @endif
+                                                        @if($user->role == 30)
+                                                        <option value="30" selected >Sécrétaire</option>
+                                                            @else
+                                                            <option value="30" >Sécrétaire</option>
+                                                            @endif
                                                     </select>
                                                      <i class="arrow"></i>
                                                 <br clear="all">
@@ -328,7 +340,11 @@
                                                     <select  name="speciality_id" id="speciality_id" required=true value="{{ old('speciality_id') }}">
                                                         @foreach($specialities as $specialite)
                                                             @if($specialite->id <> 1)
-                                                                <option value="{{$specialite->id}}">{{$specialite->intituleProf}}</option>
+                                                                @if($user->speciality_id == $specialite->id)
+                                                                <option value="{{$specialite->id}}" selected>{{$specialite->intituleProf}}</option>
+                                                                    @else
+                                                                    <option value="{{$specialite->id}}">{{$specialite->intituleProf}}</option>
+                                                                    @endif
                                                             @endif
                                                         @endforeach
                                                     </select>
@@ -395,7 +411,11 @@
                                                 <select name="establishment_id" id="establishment_id" required=true >
                                                 @foreach($establishments as $establishment)
                                                         @if($establishment->id <> 1)
-                                                            <option value="{{$establishment->id}}">{{$establishment->nameE}}</option>
+                                                            @if($user->establishment_id == $establishment->id)
+                                                            <option value="{{$establishment->id}}" selected >{{$establishment->nameE}}</option>
+                                                                @else
+                                                                <option value="{{$establishment->id}}">{{$establishment->nameE}}</option>
+                                                                @endif
                                                         @endif
                                                 @endforeach
                                                 </select>

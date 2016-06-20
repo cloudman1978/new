@@ -400,8 +400,8 @@
 
                                         <select name="labo_id" id="labo_id" style='display:inline'>
                                             <option value="-1">Choisissez le laboratoire s'il vous plaît</option>
-                                            @foreach($ests as $est)
-                                                <option value="{{ $est->id }}">{{ $est->nameE }}</option>
+                                            @foreach($labos as $labo)
+                                                <option value="{{ $labo->id }}">{{ $labo->nameE }}</option>
                                             @endforeach
 
                                         </select>

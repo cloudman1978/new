@@ -346,32 +346,61 @@
                                     </div>
                                     <div class="col-md-6 ph10">
                                         <div class="form-group{{ $errors->has('establishment_id') ? ' has-error' : '' }}" style="color:red;">
-                                            <label for="establishment_id" class="field prepend-icon">
-                                                <input type="hidden" id="establishment" name="establishment_id"
-                                                       class="gui-input" value="{{ $establishment->id }}">
-                                                <input type="text" id="establishment_name" name="establishment_name"
-                                                       class="gui-input" value="{{ $establishment->nameE }}">
-                                                <label class="field-icon" for="establishment_id">
-                                                    <i class="fa fa-hospital-o"></i>
+                                            @if(strstr($type->titre, 'labo') )
+                                                <label  class="field select">
+
+                                                    <select name="establishment_id" id="establishment_id_id" style='display:inline'>
+                                                        <option value="-1">Choisissez le cabinet demandant s'il vous plaît</option>
+                                                        @foreach($ests as $est)
+                                                            @if($est->id <> 1)
+                                                                <option value="{{ $est->id }}">{{ $est->nameE }}</option>
+                                                            @endif
+                                                        @endforeach
+
+                                                    </select>
+
+                                                    <i class="arrow"></i>
+                                                    <br clear="all">
                                                 </label>
-                                            </label>
+                                            @else
+                                                <label for="establishment_id" class="field prepend-icon">
+                                                    <input type="hidden" id="establishment" name="establishment_id"
+                                                           class="gui-input" value="{{ $establishment->id }}">
+                                                    <input type="text" id="establishment_name" name="establishment_name"
+                                                           class="gui-input" value="{{ $establishment->nameE }}">
+                                                    <label class="field-icon" for="establishment_id">
+                                                        <i class="fa fa-hospital-o"></i>
+                                                    </label>
+                                                </label>
+                                            @endif
                                         </div><br clear="all">
                                     </div></div>
                                 <div class="section">
+                                    @if(strstr($type->titre, 'labo') )
+                                        <label for="labo_id" class="field prepend-icon">
+                                            <input type="hidden" id="labo" name="labo_id"
+                                                   class="gui-input" value="{{ $establishment->id }}">
+                                            <input type="text" id="labo_name" name="labo_name"
+                                                   class="gui-input" value="{{ $establishment->nameE }}">
+                                            <label class="field-icon" for="establishment_id">
+                                                <i class="fa fa-hospital-o"></i>
+                                            </label>
+                                        </label>
+                                    @else
+                                        <label  class="field select">
 
-                                    <label  class="field select">
+                                            <select name="labo_id" id="labo_id" style='display:inline'>
+                                                <option value="-1">Choisissez le laboratoire s'il vous plaît</option>
+                                                @foreach($labos as $labo)
+                                                    <option value="{{ $labo->id }}">{{ $labo->nameE }}</option>
+                                                @endforeach
 
-                                        <select name="labo_id" id="labo_id" style='display:inline'>
-                                            <option value="-1">Choisissez le laboratoire s'il vous plaît</option>
-                                            @foreach($ests as $est)
-                                                <option value="{{ $est->id }}">{{ $est->nameE }}</option>
-                                            @endforeach
+                                            </select>
 
-                                        </select>
-
-                                        <i class="arrow"></i>
-                                        <br clear="all">
-                                    </label>
+                                            <i class="arrow"></i>
+                                            <br clear="all">
+                                        </label>
+                                    @endif
                                 </div>
                                 <div class="section">
 

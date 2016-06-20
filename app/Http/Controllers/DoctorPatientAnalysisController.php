@@ -155,9 +155,14 @@ class DoctorPatientAnalysisController extends Controller
         $indic = array();
 
         $indicators = Indicator::all();
-        $ests =  DB::table('establishment')
+        $labos=  DB::table('establishment')
             ->join('types', 'establishment.type_id', '=', 'types.id')
             ->where('types.titre', 'LIKE', '%labo%')
+            ->select('establishment.*')
+            ->get();
+        $ests = DB::table('establishment')
+            ->join('types', 'establishment.type_id', '=', 'types.id')
+            ->where('types.titre', 'NOT LIKE', '%labo%')
             ->select('establishment.*')
             ->get();
         return view('backoffice.doctor.patientAnalysis.create')->with('establishment', $establishment)
@@ -169,6 +174,7 @@ class DoctorPatientAnalysisController extends Controller
             ->with('indic', $indic)
             ->with('type', $type)
             ->with('ests', $ests)
+            ->with('labos', $labos)
             ->with('user', $user);
     }
 
@@ -349,9 +355,14 @@ class DoctorPatientAnalysisController extends Controller
             ->select( 'users.*')
             ->get();
 */
-        $ests =  DB::table('establishment')
+        $labos =  DB::table('establishment')
             ->join('types', 'establishment.type_id', '=', 'types.id')
             ->where('types.titre', 'LIKE', '%labo%')
+            ->select('establishment.*')
+            ->get();
+        $ests =  DB::table('establishment')
+            ->join('types', 'establishment.type_id', '=', 'types.id')
+            ->where('types.titre', 'NOT LIKE', '%labo%')
             ->select('establishment.*')
             ->get();
         $indicators = Indicator::all();
@@ -364,6 +375,7 @@ class DoctorPatientAnalysisController extends Controller
             ->with('patients', $patients)
             ->with('establishment', $establishment)
             ->with('ests', $ests)
+            ->with('labos', $labos)
             ->with('indicators', $indicators)
             ->with('user', $user);
     }

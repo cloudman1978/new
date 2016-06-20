@@ -360,11 +360,7 @@
 
                                     </span>
                                 </th>
-                                <th class="">Indicateurs
-                                        <span class="footbale-sort-indicator">
-
-                                    </span> </th>
-                                <th class="footable-sortable">Modifier
+                                <th class="footable-sortable" id="modify">Action
                                 </th>
                             </tr>
                             </thead>
@@ -380,11 +376,7 @@
                                     <td>{{$pha->estb}}</td>
                                     <td>{{$pha->labo}}</td>
 
-                                    <td>
-                                        @foreach($pha->inds as $ind)
-                                            {{ $ind->name }} <br>
-                                        @endforeach
-                                    </td>
+
                                     <td>
 
                                         @if(strcmp ( $type->titre, 'laboratoire')== 0)
@@ -398,6 +390,7 @@
                                             @elseif($pha->resultDate <> "0000-00-00" )
                                             <a href="/backoffice/secretary/patientAnalysis/{{$pha->id}}/viewRes"
                                                class="table-icon vue" title="Result"></a>
+
                                             @endif
                                     </td>
 

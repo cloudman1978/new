@@ -1,6 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
+function loadUrl($url)
+{
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
+    $response = curl_exec($ch);
+    curl_close($ch);
+    return $response;
+}
 
 use App\Insurance;
 use App\Rdv;
@@ -21,6 +33,7 @@ use App\InsuranceHasPatient;
 
 class RDVController extends Controller
 {
+
     /**
      * Display the specified resource.
      *
@@ -162,6 +175,13 @@ class RDVController extends Controller
                 ]);
             }
             $request->session()->push('patient', 'Bienvenue'.$patient);
+            $destination = $patient->tel;
+         //   $chaine='abcdefghijklmnopqrstuvwxyz0123456789';
+         //   $melange=str_shuffle($chaine);
+            $melange = rand(1000, 9999);
+            $message = substr($melange, 0, 4);
+            $result = loadUrl("http://bulksms.l-2t.com/Api/Api.aspx?fct=sms&key=/-/C14ZwJAfiauwNNJ4fP0AZ4mPITSDf2JM9fW3IiNOg7Xayci2FtGgPEVjdj0TR5VswgJbw1G/-/pDV7m/-/Q3rcqWg==&mobile=216".$destination."&sms=".$message."&sender=Gourmandeal");
+            var_dump($result);
             return view('rdv3')->with('user', $user)
                 ->with('patient', $patient)
                 ->with('specialities', $specialities);
@@ -178,6 +198,14 @@ class RDVController extends Controller
                     ->first();
                 if (Hash::check($inputs['password'], $patient->password)) {
                     $request->session()->push('patient', 'Bienvenue' . $patient->name);
+                    $destination = $patient->tel;
+                 //   $chaine='abcdefghijklmnopqrstuvwxyz0123456789';
+                //    $melange=str_shuffle($chaine);
+                    $melange = rand(1000, 9999);
+                    $message = substr($melange, 0, 4);
+                    $result = loadUrl("http://bulksms.l-2t.com/Api/Api.aspx?fct=sms&key=/-/C14ZwJAfiauwNNJ4fP0AZ4mPITSDf2JM9fW3IiNOg7Xayci2FtGgPEVjdj0TR5VswgJbw1G/-/pDV7m/-/Q3rcqWg==&mobile=216".$destination."&sms=".$message."&sender=Gourmandeal");
+                    var_dump($result);
+
                     return view('rdv3')->with('user', $user)
                         ->with('specialities', $specialities)
                         ->with('patient', $patient);
@@ -187,10 +215,17 @@ class RDVController extends Controller
                         ->withErrors('mot de passe ou email  non valides');
                 }
             }
-
+        $destination = $patient->tel;
+      //  $chaine='abcdefghijklmnopqrstuvwxyz0123456789';
+      //  $melange=str_shuffle($chaine);
+        $melange = rand(1000, 9999);
+        $message = substr($melange, 0, 4);
+        $result = loadUrl("http://bulksms.l-2t.com/Api/Api.aspx?fct=sms&key=/-/C14ZwJAfiauwNNJ4fP0AZ4mPITSDf2JM9fW3IiNOg7Xayci2FtGgPEVjdj0TR5VswgJbw1G/-/pDV7m/-/Q3rcqWg==&mobile=216".$destination."&sms=".$message."&sender=Gourmandeal");
+        var_dump($result);
 
         return view('rdv3')->with('user', $user)
-            ->with('specialities', $specialities);
+            ->with('specialities', $specialities)
+            ->with('patient', $patient);
     }
 
 

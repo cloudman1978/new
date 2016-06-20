@@ -222,10 +222,24 @@
                                         <select name="state" required="true" value="{{ $rdv->state }}"  class="gui-input"
                                                 placeholder="Donner l'état du rendez-vous...">
 
-                                            <option value="10">Non validé</option>
-                                            <option value="20">Validé</option>
-                                            <option value="30">Payé</option>
-                                            <option value="40">Abandonné</option>
+                                            @if($rdv->state == 10)
+                                            <option value="10" selected >Non validé</option>
+                                            @else
+                                                <option value="10">Non validé</option>
+                                            @endif
+                                            @if($rdv->state == 20)
+                                            <option value="20" selected>Validé</option>
+                                                @endif
+                                                @if($rdv->state == 30)
+                                            <option value="30" selected>Payé</option>
+                                                @else
+                                                    <option value="30">Payé</option>
+                                                @endif
+                                                @if($rdv->state == 40)
+                                            <option value="40" selected>Abandonné</option>
+                                                    @else
+                                                    <option value="40">Abandonné</option>
+                                                    @endif
                                         </select>
                                         <i class="arrow"></i>
                                         <br clear="all">
@@ -252,7 +266,11 @@
                                             <select name="patient_id" id="patient_id" >
                                                 <option value="-1">Sélectionner le patient s'il vous plaît</option>
                                                 @foreach($patients as $patient)
-                                                    <option value="{{$patient->id}}">{{$patient->name}}</option>
+                                                    @if($rdv->patient_id ==  $patient->id )
+                                                    <option value="{{$patient->id}}" selected>{{$patient->name}}</option>
+                                                    @else
+                                                        <option value="{{$patient->id}}">{{$patient->name}}</option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                             <i class="arrow"></i>
@@ -279,7 +297,11 @@
                                         <select name="user_id" id="user_id" style='display:inline'>
                                             <option value="-1">Choisissez le docteur s'il vous plaît</option>
                                             @foreach($users as $user)
-                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                                @if($rdv->user_id == $user->id)
+                                                <option value="{{ $user->id }}" selected>{{ $user->name }}</option>
+                                                @else
+                                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                                @endif
                                             @endforeach
 
                                         </select>

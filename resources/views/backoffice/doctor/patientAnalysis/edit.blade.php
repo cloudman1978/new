@@ -344,7 +344,11 @@
                                             <select name="patient_id" id="patient_id" >
                                                 <option value="-1">Sélectionner le patient s'il vous plaît</option>
                                                 @foreach($patients as $patient)
-                                                    <option value="{{$patient->id}}">{{$patient->name}}</option>
+                                                    @if($pha->patient_id == $patient->id)
+                                                    <option value="{{$patient->id}}" selected>{{$patient->name}}</option>
+                                                    @else
+                                                        <option value="{{$patient->id}}">{{$patient->name}}</option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                             <i class="arrow"></i>
@@ -352,8 +356,27 @@
                                         </label>
                                     </div>
                                     <div class="col-md-6 ph10">
-                                        <input type="hidden" value="{{$pha->establishment_id}}" name="lastEstablishment">
-                                        <div class="form-group{{ $errors->has('establishment_id') ? ' has-error' : '' }}" style="color:red;">
+                                        @if(strstr($type->titre, 'labo') )
+                                            <label  class="field select">
+                                                <input type="hidden" value="{{$pha->establishment_id}}" name="lastestab">
+                                                <select name="establishment_id" id="establishment_id_id" style='display:inline'>
+                                                    <option value="-1">Choisissez le cabinet demandant s'il vous plaît</option>
+                                                    @foreach($ests as $est)
+                                                        @if($est->id <> 1)
+                                                            @if($pha->establishment_id == $est->id)
+                                                            <option value="{{ $est->id }}" selected>{{ $est->nameE }}</option>
+                                                                @else
+                                                                <option value="{{ $est->id }}">{{ $est->nameE }}</option>
+                                                                @endif
+                                                        @endif
+                                                    @endforeach
+
+                                                </select>
+
+                                                <i class="arrow"></i>
+                                                <br clear="all">
+                                            </label>
+                                        @else
                                             <label for="establishment_id" class="field prepend-icon">
                                                 <input type="hidden" id="establishment_id" name="establishment_id"
                                                        class="gui-input" value="{{ $establishment->id }}">
@@ -363,24 +386,40 @@
                                                     <i class="fa fa-hospital-o"></i>
                                                 </label>
                                             </label>
-                                        </div><br clear="all">
+                                        @endif
                                     </div></div>
 
                                 <div class="section">
-                                    <input type="hidden" value="{{$pha->labo_id}}" name="lastLabo">
-                                    <label  class="field select">
+                                    @if(strstr($type->titre, 'labo') )
+                                        <label for="labo_id" class="field prepend-icon">
+                                            <input type="hidden" id="labo" name="labo_id"
+                                                   class="gui-input" value="{{ $establishment->id }}">
+                                            <input type="text" id="labo_name" name="labo_name"
+                                                   class="gui-input" value="{{ $establishment->nameE }}">
+                                            <label class="field-icon" for="establishment_id">
+                                                <i class="fa fa-hospital-o"></i>
+                                            </label>
+                                        </label>
+                                    @else
+                                        <input type="hidden" value="{{$pha->labo_id}}" name="lastLabo">
+                                        <label  class="field select">
 
-                                        <select name="labo_id" id="labo_id" style='display:inline'>
-                                            <option value="-1">Choisissez le laboratoire s'il vous plaît</option>
-                                            @foreach($ests as $est)
-                                                <option value="{{ $est->id }}">{{ $est->nameE }}</option>
-                                            @endforeach
+                                            <select name="labo_id" id="labo_id" style='display:inline'>
+                                                <option value="-1">Choisissez le laboratoire s'il vous plaît</option>
+                                                @foreach($labos as $labo)
+                                                    @if($pha->labo_id == $labo->id)
+                                                    <option value="{{ $labo->id }}" selected>{{ $labo->nameE }}</option>
+                                                    @else
+                                                        <option value="{{ $labo->id }}">{{ $labo->nameE }}</option>
+                                                    @endif
+                                                @endforeach
 
-                                        </select>
+                                            </select>
 
-                                        <i class="arrow"></i>
-                                        <br clear="all">
-                                    </label>
+                                            <i class="arrow"></i>
+                                            <br clear="all">
+                                        </label>
+                                    @endif
                                 </div>
                                 <div class="section">
 

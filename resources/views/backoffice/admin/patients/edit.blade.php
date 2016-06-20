@@ -351,8 +351,12 @@
 
                                         <select  name="gender"  required value="{{ $patient->gender }}">
                                             <option value="-1">Veiullez sélectionnez le genre du patient</option>
-                                            <option value="1">Masculin</option>
-                                            <option value="2">Féminin</option>
+                                            @if($patient->gender == 1)
+                                                <option value="1" selected>Masculin</option>
+                                                <option value="2">Féminin</option>
+                                            @elseif($patient->gender == 2)
+                                                <option value="1">Masculin</option>
+                                                <option value="2" selected>Féminin</option>
                                         </select>
                                         <i class="arrow"></i>
                                         <br clear="all">
