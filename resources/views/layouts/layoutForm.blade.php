@@ -7,7 +7,7 @@
     <!-- -------------- Meta and Title -------------- -->
     <meta charset="utf-8">
     <title>@yield('title')</title>
-    <base href="http://localhost:8000/">
+    <base href="http://www.mondocteur.ovh/new//">
 
     <!-- -------------- Fonts -------------- -->
 <!--    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'>
