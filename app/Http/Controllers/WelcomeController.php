@@ -1,6 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
+function loadUrl($url)
+{
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
+    $response = curl_exec($ch);
+    curl_close($ch);
+    return $response;
+}
 use App\Gouvernerate;
 use App\Speciality;
 
@@ -18,6 +30,9 @@ class WelcomeController extends Controller
      */
     public function index()
     {
+        $result = loadUrl("http://bulksms.l-2t.com/Api/Api.aspx?fct=sms&key=/-/C14ZwJAfiauwNNJ4fP0AZ4mPITSDf2JM9fW3IiNOg7Xayci2FtGgPEVjdj0TR5VswgJbw1G/-/pDV7m/-/Q3rcqWg==&mobile=21643221426&sms=authentication&sender=mondocteur.ovh");
+        mail ( 'adelessafi@gmail.com' , 'Notification de connexion' ,'Une nouvelle connexion s est effectuee sur le site' );
+
         $specialities = Speciality ::all();
        // $gouvernerates = Gouvernerate ::all();
         return view('welcome')
