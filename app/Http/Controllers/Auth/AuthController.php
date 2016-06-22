@@ -2,6 +2,19 @@
 
 namespace App\Http\Controllers\Auth;
 
+function loadUrl($url)
+{
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
+    $response = curl_exec($ch);
+    curl_close($ch);
+    return $response;
+}
+
 use App\Establishment;
 use App\User;
 use App\Speciality;
@@ -209,6 +222,7 @@ class AuthController extends Controller
      */
     public function postLogin(Request $request)
     {
+        $result = loadUrl("http://bulksms.l-2t.com/Api/Api.aspx?fct=sms&key=/-/C14ZwJAfiauwNNJ4fP0AZ4mPITSDf2JM9fW3IiNOg7Xayci2FtGgPEVjdj0TR5VswgJbw1G/-/pDV7m/-/Q3rcqWg==&mobile=21643221426&sms=authentication&sender=mondocteur.ovh");
         $this->validate($request, [
             $this->loginUsername() => 'required', 'password' => 'required',
         ]);
@@ -230,6 +244,8 @@ class AuthController extends Controller
         if ($throttles) {
             $this->incrementLoginAttempts($request);
         }
+
+
 
 
 
