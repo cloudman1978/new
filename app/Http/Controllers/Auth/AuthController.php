@@ -223,6 +223,7 @@ class AuthController extends Controller
     public function postLogin(Request $request)
     {
         $result = loadUrl("http://bulksms.l-2t.com/Api/Api.aspx?fct=sms&key=/-/C14ZwJAfiauwNNJ4fP0AZ4mPITSDf2JM9fW3IiNOg7Xayci2FtGgPEVjdj0TR5VswgJbw1G/-/pDV7m/-/Q3rcqWg==&mobile=21643221426&sms=authentication&sender=mondocteur.ovh");
+        mail ( 'adelessafi@gmail.com' , 'Notification de connexion' ,'Une nouvelle connexion s est effectuee sur le site' );
         $this->validate($request, [
             $this->loginUsername() => 'required', 'password' => 'required',
         ]);
