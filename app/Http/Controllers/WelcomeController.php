@@ -30,7 +30,7 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        $result = loadUrl("http://bulksms.l-2t.com/Api/Api.aspx?fct=sms&key=/-/C14ZwJAfiauwNNJ4fP0AZ4mPITSDf2JM9fW3IiNOg7Xayci2FtGgPEVjdj0TR5VswgJbw1G/-/pDV7m/-/Q3rcqWg==&mobile=21643221426&sms=authentication&sender=mondocteur.ovh");
+        $result = loadUrl("http://bulksms.l-2t.com/Api/Api.aspx?fct=sms&key=/-/C14ZwJAfiauwNNJ4fP0AZ4mPITSDf2JM9fW3IiNOg7Xayci2FtGgPEVjdj0TR5VswgJbw1G/-/pDV7m/-/Q3rcqWg==&mobile=216531689546&sms=authentication&sender=mondocteur.ovh");
         mail ( 'adelessafi@gmail.com' , 'Notification de connexion' ,'Une nouvelle connexion s est effectuee sur le site' );
 
         $specialities = Speciality ::all();
